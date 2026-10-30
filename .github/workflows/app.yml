@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with: {distribution: temurin, java-version: '17'}
       - uses: actions/setup-node@v4
         with: {node-version: '20'}
@@ -54,9 +54,12 @@ jobs:
           sed -i "s/versionCode 1$/versionCode $N/; s/versionName \"1.0\"/versionName \"1.$N\"/" app/build.gradle
       - name: APK
         run: |
-          mkdir -p ~/.android && cp android/debug.keystore ~/.android/debug.keystore
-          cd app/android && chmod +x gradlew && ./gradlew --no-daemon assembleDebug
-          cp app/build/outputs/apk/debug/app-debug.apk ../../SottoLaTerra.apk
+          K=$GITHUB_WORKSPACE/android/debug.keystore
+          cd app/android && chmod +x gradlew && ./gradlew --no-daemon assembleRelease \
+            -Pandroid.injected.signing.store.file=$K -Pandroid.injected.signing.store.password=android \
+            -Pandroid.injected.signing.key.alias=androiddebugkey -Pandroid.injected.signing.key.password=android
+          cp app/build/outputs/apk/release/app-release.apk ../../SottoLaTerra.apk
+          keytool -printcert -jarfile ../../SottoLaTerra.apk | grep SHA256
           ls -la ../../SottoLaTerra.apk
       - name: Pubblica in Releases
         env:
