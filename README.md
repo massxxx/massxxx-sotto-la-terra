@@ -1,5 +1,7 @@
 # Sotto la terra
 
+[![Scarica l'APK per Android](https://img.shields.io/badge/Scarica-APK%20Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/massxxx/massxxx-sotto-la-terra/releases/latest/download/SottoLaTerra.apk)
+
 Gioco di archeologia rilassante per Android: dodici scavi veri nel mondo (Pompei, Valle dei Re, Lascaux, Troia, Esercito di terracotta, Mohenjo-daro, Machu Picchu, Olduvai, Birka, Palenque, Cnosso, Sutton Hoo), 96 reperti da trovare, pulire, ricomporre, decifrare e mettere in un museo tutto tuo.
 
 **Scarica l'app per Android:** https://github.com/massxxx/massxxx-sotto-la-terra/releases/latest/download/SottoLaTerra.apk
